@@ -14,10 +14,6 @@ def post_detail(request, pk):
     return render(request, 'blog/post_detail.html', {'post': post})
 
 def post_new(request):
-    form = PostForm()
-    return render(request, 'blog/post_edit.html', {'form': form})
-
-def post_new(request):
     if request.method == "POST":
         form = PostForm(request.POST)
         if form.is_valid():
@@ -42,4 +38,4 @@ def post_edit(request, pk):
             return redirect('post_detail', pk=post.pk)
     else:
         form = PostForm(instance=post)
-    return render(request, 'blog/post_edit.html', {'form': form})    
+    return render(request, 'blog/post_edit.html', {'form': form})
